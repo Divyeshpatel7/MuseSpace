@@ -59,7 +59,7 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
       deleteSavedPost(savedPostRecord.$id);
     } else {
       setIsSaved(true);
-      savePost({ postId: post?.$id || '', userId});
+      savePost({ userId, postId: post?.$id || ''});
     }
   };
 
