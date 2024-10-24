@@ -10,7 +10,7 @@ import { useUserContext } from "@/context/AuthContext";
 const LeftSidebar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
+  const { user, setuser, setIsAuthenticated, isLoading } = useUserContext();
 
   const { mutate: signOut } = useSignOutAccount();
 
@@ -20,7 +20,7 @@ const LeftSidebar = () => {
     e.preventDefault();
     signOut();
     setIsAuthenticated(false);
-    setUser(INITIAL_USER);
+    setuser(INITIAL_USER);
     navigate("/sign-in");
   };
 

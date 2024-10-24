@@ -10,3 +10,7 @@ export const QueryProvider = ({ children }: { children: ReactNode}) => {
     </QueryClientProvider>
   )
 }
+
+export const LocalStorageKeys = {
+  USER : "user"
+}
