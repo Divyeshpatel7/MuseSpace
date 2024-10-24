@@ -22,7 +22,7 @@ const App = () => {
             <Route path='/sign-up' element={!authContext.user.id ? <SignupForm/> : Redirect} />
           </Route>
           
-          {/* private routes */}
+          {/* Private routes */}
           <Route element={<RootLayout />}>
             <Route index element={authContext.user.id ? <Home /> : Redirect} /> 
             <Route path='/explore' element={authContext.user.id ? <Explore /> : Redirect} />
