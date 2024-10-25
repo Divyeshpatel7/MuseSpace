@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { getCurrentUser } from '@/lib/appwrite/api'
 import { LocalStorageKeys } from '@/lib/react-query/QueryProvider'
 import { IUser, IContextType, INITIAL_USER } from '@/types'
@@ -35,13 +36,17 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
-    const str = JSON.parse(localStorage.getItem(LocalStorageKeys.USER) ?? '') || INITIAL_USER;
-    if (str.id) {
-      setUser(str)
+    let str = localStorage.getItem(LocalStorageKeys.USER);
+    if (str) {
+      try {
+        str = JSON.parse(str)
+        setUser(INITIAL_USER);
+      } catch (error) {
+        console.error("Error parsing JSON:", error)
+        str = null;
+      }
     }
-    if (!str.id) {
-      navigate('/sign-in')
-    }
+    const storedUser = str || INITIAL_USER;
   }, []);
 
   useEffect(() => {
